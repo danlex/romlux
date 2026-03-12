@@ -337,46 +337,32 @@
     /* Sponsorship tiers */
     .tiers-row {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 10px;
     }
     .tier {
       border: 1px solid #E5E7EB;
       border-radius: 8px;
       padding: 16px 12px;
-      text-align: center;
+      border-left: 3px solid var(--accent);
     }
-    .tier.platinum { border-color: var(--gold); background: linear-gradient(180deg, #FFFDF5, #FFF9E6); border-width: 2px; }
+    .tier.platinum { border-color: var(--gold); background: linear-gradient(180deg, #FFFDF5, #FFF9E6); border-width: 2px; border-left-width: 3px; }
     .tier.gold { border-color: #D4A843; }
     .tier-name {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
+      letter-spacing: 0.06em;
+      color: var(--navy);
+      margin-bottom: 8px;
     }
     .tier.platinum .tier-name { color: #92700C; }
     .tier.gold .tier-name { color: #92700C; }
-    .tier.silver .tier-name { color: #6B7280; }
-    .tier.bronze .tier-name { color: #92400E; }
-    .tier-price {
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
     .tier ul {
       list-style: none;
       text-align: left;
       font-size: 9px;
       color: #4B5563;
       line-height: 1.7;
-    }
-    .tier li::before {
-      content: '\2713';
-      color: var(--accent);
-      font-weight: 700;
-      margin-right: 4px;
     }
 
     /* Showcase text */
@@ -653,50 +639,44 @@
   </div>
 
   <div style="margin-top:20px">
-    <div class="section-label">Sponsorship Tiers</div>
-    <div class="section-title" style="margin-bottom:20px">Position your brand at the intersection of two markets.</div>
+    <div class="section-label">Sponsorship</div>
+    <div class="section-title" style="margin-bottom:6px">Three tiers &mdash; calibrated to your engagement objectives.</div>
+    <div class="section-desc" style="margin-bottom:18px">Limited sponsorship positions by design. Secure your programme placement before allocation closes.</div>
     <div class="tiers-row">
-      <div class="tier platinum">
-        <div class="tier-name">Platinum</div>
-        <div class="tier-price">&euro;15,000</div>
+      <div class="tier">
+        <div class="tier-name">Supporting Sponsor</div>
         <ul>
-          <li>Exclusive 20-min keynote</li>
-          <li>Premium panel seat</li>
-          <li>Logo on all materials</li>
-          <li>10 VIP passes</li>
-          <li>Full-page programme ad</li>
-          <li>Priority matchmaking</li>
+          <li>&#10003; Networking session access</li>
+          <li>&#10003; Logo on event materials</li>
+          <li>&#10003; Official programme listing</li>
+          <li>&#10003; RomLux channel visibility</li>
         </ul>
+        <div style="font-size:10px;color:var(--gray);margin-top:6px"><strong>1</strong> representative admitted</div>
       </div>
       <div class="tier gold">
-        <div class="tier-name">Gold</div>
-        <div class="tier-price">&euro;10,000</div>
+        <div class="tier-name">Gold Sponsor</div>
         <ul>
-          <li>Panel speaking slot</li>
-          <li>Logo on event materials</li>
-          <li>6 VIP passes</li>
-          <li>Half-page programme ad</li>
-          <li>Matchmaking access</li>
+          <li>&#10003; Networking session access</li>
+          <li>&#10003; Logo on event materials</li>
+          <li>&#10003; Official programme listing</li>
+          <li>&#10003; RomLux channel visibility</li>
+          <li>&#10003; Investor matchmaking sessions</li>
+          <li>&#10003; Panel speaker placement</li>
         </ul>
+        <div style="font-size:10px;color:var(--gray);margin-top:6px"><strong>2</strong> representatives admitted</div>
       </div>
-      <div class="tier silver">
-        <div class="tier-name">Silver</div>
-        <div class="tier-price">&euro;5,000</div>
+      <div class="tier platinum">
+        <div class="tier-name">Platinum Sponsor</div>
         <ul>
-          <li>Logo on event materials</li>
-          <li>4 event passes</li>
-          <li>Quarter-page ad</li>
-          <li>Networking access</li>
+          <li>&#10003; Networking session access</li>
+          <li>&#10003; Logo on event materials</li>
+          <li>&#10003; Official programme listing</li>
+          <li>&#10003; RomLux channel visibility</li>
+          <li>&#10003; Investor matchmaking sessions</li>
+          <li>&#10003; Panel speaker placement</li>
+          <li>&#10003; 15-min company presentation</li>
         </ul>
-      </div>
-      <div class="tier bronze">
-        <div class="tier-name">Bronze</div>
-        <div class="tier-price">&euro;2,500</div>
-        <ul>
-          <li>Logo on website</li>
-          <li>2 event passes</li>
-          <li>Networking access</li>
-        </ul>
+        <div style="font-size:10px;color:var(--gray);margin-top:6px"><strong>2</strong> representatives admitted</div>
       </div>
     </div>
   </div>
