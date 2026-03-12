@@ -47,18 +47,16 @@
     .cover {
       background: var(--navy);
       color: var(--white);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 50px;
       min-height: 297mm;
       position: relative;
+      display: flex;
+      flex-direction: column;
     }
-    .cover::before {
+    .cover::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 0%, rgba(8,8,20,0.7) 50%, rgba(8,8,20,0.95) 75%);
+      background: linear-gradient(180deg, rgba(8,8,20,0.3) 0%, rgba(8,8,20,0.6) 40%, rgba(8,8,20,0.85) 70%);
       z-index: 1;
     }
     .cover-bg {
@@ -67,58 +65,37 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.45;
+      opacity: 0.4;
     }
-    .cover > *:not(.cover-bg) { position: relative; z-index: 2; }
-    .cover-top {
-      position: absolute;
-      top: 40px;
-      left: 50px;
-      right: 50px;
+    .cover-nav {
+      position: relative;
       z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 24px 40px;
     }
-    .cover-logo {
-      height: 44px;
+    .cover-nav img {
+      height: 36px;
       width: auto;
       background: white;
-      padding: 5px 10px;
+      padding: 4px 8px;
       border-radius: 6px;
     }
-    .cover-top-right {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
+    .cover-body {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      padding: 0 40px 40px;
+      flex: 1;
+      align-content: center;
     }
-    .cover-badge {
-      display: inline-block;
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 20px;
-      padding: 7px 20px;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 24px;
-      backdrop-filter: blur(10px);
-      background: rgba(20,105,255,0.08);
-    }
-    .cover-badge::before {
-      content: '';
-      display: inline-block;
-      width: 6px; height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      margin-right: 8px;
-      vertical-align: middle;
+    .cover-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .cover-prep {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -126,71 +103,145 @@
       margin-bottom: 2px;
     }
     .cover h1 {
-      font-size: 38px;
+      font-size: 32px;
       font-weight: 900;
-      line-height: 1.05;
+      line-height: 1.08;
       letter-spacing: -0.03em;
       margin-bottom: 4px;
     }
-    .cover h1 .accent { color: var(--accent); }
+    .cover h1 .accent { color: var(--gold); }
+    .cover-badge {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 20px;
+      background: rgba(20,105,255,0.06);
+    }
+    .cover-badge::before {
+      content: '';
+      display: inline-block;
+      width: 5px; height: 5px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
     .cover-sub {
-      font-size: 14px;
-      color: rgba(255,255,255,0.55);
-      margin-top: 24px;
-      max-width: 400px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 16px;
       line-height: 1.65;
     }
     .cover-meta {
       display: flex;
-      gap: 40px;
-      margin-top: 32px;
-      font-size: 11px;
+      gap: 24px;
+      margin-top: 20px;
+      font-size: 10px;
       color: rgba(255,255,255,0.4);
     }
-    .cover-meta strong {
-      color: var(--white);
-      display: block;
-      font-size: 13px;
-      margin-bottom: 2px;
+    .cover-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .cover-meta-item svg {
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+    .cover-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .cover-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+    }
+    .cover-btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    .cover-btn-outline {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
     }
 
-    .cover-partners {
-      margin-top: 60px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 30px;
+    /* Cover right column */
+    .cover-right {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      justify-content: center;
     }
-    .cover-partners-label {
+    .cover-partner-strip {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .cover-partner-strip-label {
       font-size: 9px;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 16px;
+      margin-bottom: 10px;
     }
-    .cover-logos {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+    .cover-logos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
     }
     .cover-logo-card {
       background: white;
-      border-radius: 6px;
-      padding: 6px 14px;
-      height: 38px;
+      border-radius: 5px;
+      padding: 5px 8px;
+      height: 34px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .cover-logo-card img {
       max-height: 100%;
-      max-width: 80px;
+      max-width: 68px;
       object-fit: contain;
     }
     .cover-logo-card span {
       color: var(--navy);
-      font-size: 9px;
+      font-size: 8px;
       font-weight: 800;
       letter-spacing: 0.03em;
+    }
+    .cover-info-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .cover-info-card h3 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .cover-info-card p {
+      font-size: 11px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.55;
     }
 
     /* ---- PAGE 2+: CONTENT PAGES ---- */
@@ -199,6 +250,8 @@
       min-height: 297mm;
       display: flex;
       flex-direction: column;
+      background: var(--navy);
+      color: var(--white);
     }
     .page-header {
       display: flex;
@@ -206,9 +259,9 @@
       justify-content: space-between;
       margin-bottom: 30px;
       padding-bottom: 12px;
-      border-bottom: 2px solid var(--navy);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    .page-header-logo { height: 24px; }
+    .page-header-logo { height: 24px; background: white; padding: 3px 6px; border-radius: 4px; }
     .page-header-title {
       font-size: 8px;
       font-weight: 700;
@@ -230,12 +283,12 @@
       font-weight: 900;
       line-height: 1.2;
       letter-spacing: -0.02em;
-      color: var(--navy);
+      color: var(--white);
       margin-bottom: 8px;
     }
     .section-desc {
       font-size: 11px;
-      color: var(--gray);
+      color: rgba(255,255,255,0.5);
       line-height: 1.6;
       max-width: 480px;
       margin-bottom: 20px;
@@ -251,7 +304,8 @@
     .stat-box {
       text-align: center;
       padding: 18px 10px;
-      background: var(--navy);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 10px;
       color: white;
     }
@@ -263,7 +317,7 @@
     }
     .stat-box .label {
       font-size: 9px;
-      color: rgba(255,255,255,0.55);
+      color: rgba(255,255,255,0.45);
       margin-top: 6px;
     }
 
@@ -274,10 +328,11 @@
       gap: 12px;
     }
     .card {
-      border: 1px solid #E5E7EB;
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 8px;
       padding: 16px;
       border-left: 3px solid var(--accent);
+      background: rgba(255,255,255,0.03);
     }
     .card-num {
       font-size: 18px;
@@ -288,12 +343,12 @@
     .card h3 {
       font-size: 12px;
       font-weight: 800;
-      color: var(--navy);
+      color: var(--white);
       margin-bottom: 5px;
     }
     .card p {
       font-size: 10px;
-      color: var(--gray);
+      color: rgba(255,255,255,0.5);
       line-height: 1.5;
     }
 
@@ -309,10 +364,10 @@
     .partners-section-title {
       font-size: 12px;
       font-weight: 800;
-      color: var(--navy);
+      color: var(--white);
       margin-bottom: 12px;
       padding-bottom: 6px;
-      border-bottom: 1px solid #E5E7EB;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .partners-grid {
       display: grid;
@@ -321,17 +376,18 @@
     }
     .partner-item {
       padding: 10px;
-      border: 1px solid #E5E7EB;
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 8px;
+      background: rgba(255,255,255,0.03);
     }
     .partner-item strong {
       font-size: 12px;
-      color: var(--navy);
+      color: var(--white);
       display: block;
     }
     .partner-item span {
       font-size: 9px;
-      color: var(--gray);
+      color: rgba(255,255,255,0.45);
     }
 
     /* Sponsorship tiers */
@@ -341,27 +397,28 @@
       gap: 10px;
     }
     .tier {
-      border: 1px solid #E5E7EB;
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 8px;
       padding: 16px 12px;
       border-left: 3px solid var(--accent);
+      background: rgba(255,255,255,0.03);
     }
-    .tier.platinum { border-color: var(--gold); background: linear-gradient(180deg, #FFFDF5, #FFF9E6); border-width: 2px; border-left-width: 3px; }
-    .tier.gold { border-color: #D4A843; }
+    .tier.platinum { border-color: var(--gold); background: rgba(240,192,64,0.06); border-width: 2px; border-left-width: 3px; }
+    .tier.gold { border-color: rgba(212,168,67,0.5); }
     .tier-name {
       font-size: 11px;
       font-weight: 800;
       letter-spacing: 0.06em;
-      color: var(--navy);
+      color: var(--white);
       margin-bottom: 8px;
     }
-    .tier.platinum .tier-name { color: #92700C; }
-    .tier.gold .tier-name { color: #92700C; }
+    .tier.platinum .tier-name { color: var(--gold); }
+    .tier.gold .tier-name { color: #D4A843; }
     .tier ul {
       list-style: none;
       text-align: left;
       font-size: 9px;
-      color: #4B5563;
+      color: rgba(255,255,255,0.55);
       line-height: 1.7;
     }
 
@@ -382,7 +439,7 @@
       font-size: 24px;
       font-weight: 900;
       line-height: 1.1;
-      color: var(--navy);
+      color: var(--white);
       margin-bottom: 14px;
     }
     .showcase-text-content .prep {
@@ -394,7 +451,7 @@
     }
     .showcase-text-content p {
       font-size: 12px;
-      color: var(--gray);
+      color: rgba(255,255,255,0.5);
       line-height: 1.65;
       margin-bottom: 10px;
     }
@@ -417,11 +474,11 @@
     .page-footer {
       margin-top: auto;
       padding-top: 20px;
-      border-top: 1px solid #E5E7EB;
+      border-top: 1px solid rgba(255,255,255,0.08);
       display: flex;
       justify-content: space-between;
       font-size: 9px;
-      color: var(--gray);
+      color: rgba(255,255,255,0.3);
     }
 
     /* Print button */
@@ -452,36 +509,67 @@
 <!-- PAGE 1: COVER -->
 <div class="page cover">
   <img class="cover-bg" src="img/shine-photography-01378.webp" alt="">
-  <div class="cover-top">
-    <img class="cover-logo" src="https://romlux.org/wp-content/uploads/2023/11/logo_romlux_cc.png" alt="RomLux">
-    <div class="cover-top-right">14&ndash;15 October 2026</div>
+
+  <div class="cover-nav">
+    <img src="https://romlux.org/wp-content/uploads/2023/11/logo_romlux_cc.png" alt="RomLux">
   </div>
 
-  <div class="cover-badge">Side event of Luxembourg Venture Days 2026</div>
+  <div class="cover-body">
+    <div class="cover-left">
+      <div class="cover-prep">From</div>
+      <h1>Bucharest Stock Exchange</h1>
+      <div class="cover-prep" style="margin-top:10px">To</div>
+      <h1>Luxembourg <span class="accent">Capital</span></h1>
 
-  <div class="cover-prep">From</div>
-  <h1>Bucharest Stock Exchange</h1>
-  <div class="cover-prep" style="margin-top:10px">To</div>
-  <h1>Luxembourg <span class="accent">Capital</span></h1>
+      <div class="cover-badge">Side event of Luxembourg Venture Days 2026</div>
 
-  <p class="cover-sub">Where Romania's capital markets ecosystem meets Luxembourg's &euro;5 trillion investment infrastructure.</p>
+      <p class="cover-sub">Where Romania's capital markets ecosystem meets Luxembourg's &euro;5 trillion investment infrastructure.</p>
 
-  <div class="cover-meta">
-    <div><strong>14&ndash;15 October 2026</strong>Date</div>
-    <div><strong>Luxembourg Stock Exchange</strong>Venue</div>
-    <div><strong>Morning Session</strong>Format</div>
-  </div>
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          14&ndash;15 October 2026
+        </div>
+        <div class="cover-meta-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Luxembourg Stock Exchange
+        </div>
+        <div class="cover-meta-item">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Morning Session
+        </div>
+      </div>
 
-  <div class="cover-partners">
-    <div class="cover-partners-label">Organised &amp; supported by</div>
-    <div class="cover-logos">
-      <div class="cover-logo-card"><img src="https://romlux.org/wp-content/uploads/2023/11/logo_romlux_cc.png" alt="RomLux"></div>
-      <div class="cover-logo-card"><img src="https://cdn-assets.inwink.com/cdaad7a2-63a3-ef11-88cf-6045bd9da68b-public/assets/pictures/Elements%2520Branding%2520Luxembourg%2520Venture%2520Days_Full_Color_Logo-08.png" alt="LVD"></div>
-      <div class="cover-logo-card"><img src="https://cdn.brandfetch.io/idEEZQNs4r/w/820/h/160/theme/light/logo.png?c=1bxid64Mup7aczewSAYMX&t=1769411684439" alt="Luxinnovation"></div>
-      <div class="cover-logo-card"><img src="https://lpea.lu/wp-content/uploads/2025/02/logo-FINAL-15y.png" alt="LPEA"></div>
-      <div class="cover-logo-card"><span>LuxSE</span></div>
-      <div class="cover-logo-card"><img src="img/guvernul-romaniei.png" alt="MIPE"></div>
-      <div class="cover-logo-card"><span>FOAL</span></div>
+      <div class="cover-actions">
+        <span class="cover-btn cover-btn-primary">Register Interest &rarr;</span>
+        <span class="cover-btn cover-btn-outline">Explore the Forum</span>
+      </div>
+    </div>
+
+    <div class="cover-right">
+      <div class="cover-partner-strip">
+        <div class="cover-partner-strip-label">Organised &amp; supported by</div>
+        <div class="cover-logos-grid">
+          <div class="cover-logo-card"><img src="https://romlux.org/wp-content/uploads/2023/11/logo_romlux_cc.png" alt="RomLux"></div>
+          <div class="cover-logo-card"><img src="https://cdn-assets.inwink.com/cdaad7a2-63a3-ef11-88cf-6045bd9da68b-public/assets/pictures/Elements%2520Branding%2520Luxembourg%2520Venture%2520Days_Full_Color_Logo-08.png" alt="LVD"></div>
+          <div class="cover-logo-card"><img src="https://cdn.brandfetch.io/idEEZQNs4r/w/820/h/160/theme/light/logo.png?c=1bxid64Mup7aczewSAYMX&t=1769411684439" alt="Luxinnovation"></div>
+          <div class="cover-logo-card"><img src="https://lpea.lu/wp-content/uploads/2025/02/logo-FINAL-15y.png" alt="LPEA"></div>
+          <div class="cover-logo-card"><img src="https://stlxipuhot.blob.core.windows.net/staging/sharedmedia/startup/home/stl_logo.svg?ext=.svg" alt="Startup Luxembourg"></div>
+          <div class="cover-logo-card"><span>LuxSE</span></div>
+          <div class="cover-logo-card"><img src="img/guvernul-romaniei.png" alt="MIPE"></div>
+          <div class="cover-logo-card"><span>FOAL</span></div>
+        </div>
+      </div>
+
+      <div class="cover-info-card">
+        <h3>Investment Forum</h3>
+        <p>Company presentations, sector panels, and 1-to-1 matchmaking with Romania's blue-chip issuers and Luxembourg's institutional investors.</p>
+      </div>
+
+      <div class="cover-info-card">
+        <h3>Anchored at LuxSE</h3>
+        <p>Integrated into Luxembourg Venture Days 2026 at Europe's second-largest fund domicile &mdash; &euro;5.7T in AUM.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -681,9 +769,9 @@
     </div>
   </div>
 
-  <div style="margin-top:30px; text-align:center; padding:20px; background:var(--light-bg); border-radius:10px;">
-    <div style="font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px;">Register Interest</div>
-    <div style="font-size:11px; color:var(--gray);">Contact: info@romlux.org &nbsp;|&nbsp; romlux.org &nbsp;|&nbsp; danlex.github.io/romlux</div>
+  <div style="margin-top:30px; text-align:center; padding:20px; background:rgba(20,105,255,0.08); border:1px solid rgba(20,105,255,0.15); border-radius:10px;">
+    <div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:4px;">Register Interest</div>
+    <div style="font-size:11px; color:rgba(255,255,255,0.45);">Contact: info@romlux.org &nbsp;|&nbsp; romlux.org &nbsp;|&nbsp; danlex.github.io/romlux</div>
   </div>
 
   <div class="page-footer">
