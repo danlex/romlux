@@ -49,29 +49,64 @@
       color: var(--white);
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 60px 50px;
+      justify-content: flex-end;
+      padding: 50px;
       min-height: 297mm;
+      position: relative;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(8,8,20,0.7) 50%, rgba(8,8,20,0.95) 75%);
+      z-index: 1;
+    }
+    .cover-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+    }
+    .cover > *:not(.cover-bg) { position: relative; z-index: 2; }
+    .cover-top {
+      position: absolute;
+      top: 40px;
+      left: 50px;
+      right: 50px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .cover-logo {
-      height: 60px;
+      height: 44px;
       width: auto;
       background: white;
-      padding: 6px 12px;
-      border-radius: 8px;
-      margin-bottom: 50px;
+      padding: 5px 10px;
+      border-radius: 6px;
     }
-    .cover-badge {
-      display: inline-block;
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 20px;
-      padding: 6px 18px;
-      font-size: 10px;
+    .cover-top-right {
+      font-size: 9px;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .cover-badge {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 7px 20px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 30px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+      background: rgba(20,105,255,0.08);
     }
     .cover-badge::before {
       content: '';
@@ -83,36 +118,41 @@
       vertical-align: middle;
     }
     .cover-prep {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     .cover h1 {
-      font-size: 42px;
+      font-size: 38px;
       font-weight: 900;
       line-height: 1.05;
       letter-spacing: -0.03em;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .cover h1 .accent { color: var(--accent); }
     .cover-sub {
-      font-size: 15px;
-      color: rgba(255,255,255,0.6);
-      margin-top: 30px;
-      max-width: 420px;
-      line-height: 1.6;
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 24px;
+      max-width: 400px;
+      line-height: 1.65;
     }
     .cover-meta {
       display: flex;
-      gap: 30px;
-      margin-top: 40px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.5);
+      gap: 40px;
+      margin-top: 32px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
     }
-    .cover-meta strong { color: rgba(255,255,255,0.85); display: block; font-size: 14px; }
+    .cover-meta strong {
+      color: var(--white);
+      display: block;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
 
     .cover-partners {
       margin-top: 60px;
@@ -155,7 +195,7 @@
 
     /* ---- PAGE 2+: CONTENT PAGES ---- */
     .content-page {
-      padding: 50px;
+      padding: 40px 45px;
       min-height: 297mm;
       display: flex;
       flex-direction: column;
@@ -164,13 +204,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 40px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid var(--accent);
+      margin-bottom: 30px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--navy);
     }
-    .page-header-logo { height: 28px; }
+    .page-header-logo { height: 24px; }
     .page-header-title {
-      font-size: 9px;
+      font-size: 8px;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -178,51 +218,52 @@
     }
 
     .section-label {
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
     .section-title {
-      font-size: 28px;
+      font-size: 22px;
       font-weight: 900;
-      line-height: 1.15;
+      line-height: 1.2;
       letter-spacing: -0.02em;
       color: var(--navy);
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
     .section-desc {
-      font-size: 13px;
+      font-size: 11px;
       color: var(--gray);
-      line-height: 1.65;
-      max-width: 520px;
-      margin-bottom: 30px;
+      line-height: 1.6;
+      max-width: 480px;
+      margin-bottom: 20px;
     }
 
     /* Stats row */
     .stats-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      margin-bottom: 40px;
+      gap: 14px;
+      margin-bottom: 36px;
     }
     .stat-box {
       text-align: center;
-      padding: 20px 12px;
-      background: var(--light-bg);
+      padding: 18px 10px;
+      background: var(--navy);
       border-radius: 10px;
+      color: white;
     }
     .stat-box .num {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 900;
       color: var(--accent);
       line-height: 1;
     }
     .stat-box .label {
-      font-size: 10px;
-      color: var(--gray);
+      font-size: 9px;
+      color: rgba(255,255,255,0.55);
       margin-top: 6px;
     }
 
@@ -230,29 +271,30 @@
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 12px;
     }
     .card {
       border: 1px solid #E5E7EB;
-      border-radius: 10px;
-      padding: 20px;
+      border-radius: 8px;
+      padding: 16px;
+      border-left: 3px solid var(--accent);
     }
     .card-num {
-      font-size: 22px;
+      font-size: 18px;
       font-weight: 900;
       color: var(--accent);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     .card h3 {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 800;
       color: var(--navy);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
     .card p {
-      font-size: 11px;
+      font-size: 10px;
       color: var(--gray);
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     /* Two-column cards */
@@ -296,37 +338,37 @@
     .tiers-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+      gap: 10px;
     }
     .tier {
       border: 1px solid #E5E7EB;
-      border-radius: 10px;
-      padding: 20px 16px;
+      border-radius: 8px;
+      padding: 16px 12px;
       text-align: center;
     }
-    .tier.platinum { border-color: var(--gold); background: #FFFDF5; }
+    .tier.platinum { border-color: var(--gold); background: linear-gradient(180deg, #FFFDF5, #FFF9E6); border-width: 2px; }
     .tier.gold { border-color: #D4A843; }
     .tier-name {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .tier.platinum .tier-name { color: #92700C; }
     .tier.gold .tier-name { color: #92700C; }
     .tier.silver .tier-name { color: #6B7280; }
     .tier.bronze .tier-name { color: #92400E; }
     .tier-price {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
       color: var(--navy);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .tier ul {
       list-style: none;
       text-align: left;
-      font-size: 9.5px;
+      font-size: 9px;
       color: #4B5563;
       line-height: 1.7;
     }
@@ -334,7 +376,7 @@
       content: '\2713';
       color: var(--accent);
       font-weight: 700;
-      margin-right: 5px;
+      margin-right: 4px;
     }
 
     /* Showcase text */
@@ -374,15 +416,15 @@
     /* Gallery grid */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 16px;
     }
     .gallery-grid img {
       width: 100%;
-      height: 120px;
+      height: 100px;
       object-fit: cover;
-      border-radius: 8px;
+      border-radius: 6px;
     }
 
     /* Footer */
@@ -423,7 +465,11 @@
 
 <!-- PAGE 1: COVER -->
 <div class="page cover">
-  <img class="cover-logo" src="https://romlux.org/wp-content/uploads/2023/11/logo_romlux_cc.png" alt="RomLux">
+  <img class="cover-bg" src="img/shine-photography-01378.webp" alt="">
+  <div class="cover-top">
+    <img class="cover-logo" src="https://romlux.org/wp-content/uploads/2023/11/logo_romlux_cc.png" alt="RomLux">
+    <div class="cover-top-right">14&ndash;15 October 2026</div>
+  </div>
 
   <div class="cover-badge">Side event of Luxembourg Venture Days 2026</div>
 
