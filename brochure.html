@@ -5,7 +5,7 @@
   <title>RomLux Brochure — From Bucharest Stock Exchange to Luxembourg Capital 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
-    @page { size: A4; margin: 0; }
+    @page { size: A5; margin: 0; }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
@@ -28,8 +28,8 @@
 
     /* ---- PAGE SYSTEM ---- */
     .page {
-      width: 210mm;
-      min-height: 297mm;
+      width: 148mm;
+      min-height: 210mm;
       margin: 0 auto;
       padding: 0;
       page-break-after: always;
@@ -47,10 +47,11 @@
     .cover {
       background: var(--navy);
       color: var(--white);
-      min-height: 297mm;
+      height: 210mm;
       position: relative;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
     }
     .cover::after {
       content: '';
@@ -70,32 +71,47 @@
     .cover-nav {
       position: relative;
       z-index: 2;
-      padding: 24px 40px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .cover-nav img {
-      height: 36px;
+    .cover-nav-logo {
+      height: 34px;
       width: auto;
       background: white;
       padding: 4px 8px;
-      border-radius: 6px;
+      border-radius: 5px;
+    }
+    .cover-nav-qr {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .cover-nav-qr img {
+      width: 36px;
+      height: 36px;
+      background: white;
+      padding: 2px;
+      border-radius: 3px;
+    }
+    .cover-nav-qr-text {
+      font-size: 6px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.3;
+    }
+    .cover-nav-qr-text strong {
+      color: var(--white);
+      display: block;
+      font-size: 6px;
     }
     .cover-body {
       position: relative;
       z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      padding: 0 40px 40px;
-      flex: 1;
-      align-content: center;
-    }
-    .cover-left {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding: 10px 18px 8px;
     }
     .cover-prep {
-      font-size: 11px;
+      font-size: 8px;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -103,24 +119,25 @@
       margin-bottom: 2px;
     }
     .cover h1 {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 900;
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin-bottom: 4px;
+      line-height: 1.1;
+      letter-spacing: 0.04em;
+      word-spacing: 0.08em;
+      margin-bottom: 2px;
     }
     .cover h1 .accent { color: var(--gold); }
     .cover-badge {
       display: inline-block;
       border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 20px;
-      padding: 6px 16px;
-      font-size: 8px;
+      border-radius: 14px;
+      padding: 4px 10px;
+      font-size: 7px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-top: 20px;
+      margin-top: 8px;
       background: rgba(20,105,255,0.06);
     }
     .cover-badge::before {
@@ -133,121 +150,130 @@
       vertical-align: middle;
     }
     .cover-sub {
-      font-size: 12px;
+      font-size: 8px;
       color: rgba(255,255,255,0.5);
-      margin-top: 16px;
-      line-height: 1.65;
+      margin-top: 8px;
+      line-height: 1.5;
     }
     .cover-meta {
       display: flex;
-      gap: 24px;
-      margin-top: 20px;
-      font-size: 10px;
+      gap: 12px;
+      margin-top: 8px;
+      font-size: 7px;
       color: rgba(255,255,255,0.4);
     }
     .cover-meta-item {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 3px;
     }
     .cover-meta-item svg {
       opacity: 0.5;
       flex-shrink: 0;
-    }
-    .cover-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 24px;
-    }
-    .cover-btn {
-      display: inline-block;
-      padding: 10px 24px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-    }
-    .cover-btn-primary {
-      background: var(--accent);
-      color: white;
-    }
-    .cover-btn-outline {
-      border: 1px solid rgba(255,255,255,0.2);
-      color: white;
+      width: 10px;
+      height: 10px;
     }
 
-    /* Cover right column */
-    .cover-right {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      justify-content: center;
+    /* Cover bottom row: QR + info cards */
+    .cover-bottom {
+      position: relative;
+      z-index: 2;
+      padding: 6px 18px 8px;
+      display: grid;
+      grid-template-columns: auto 1fr 1fr;
+      gap: 8px;
+      align-items: start;
     }
+    .cover-qr {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cover-qr img {
+      width: 44px;
+      height: 44px;
+      background: white;
+      padding: 3px;
+      border-radius: 3px;
+    }
+    .cover-qr-text {
+      font-size: 7px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.4;
+    }
+    .cover-qr-text strong {
+      color: var(--white);
+      display: block;
+      font-size: 7px;
+    }
+    .cover-info-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 10px 11px;
+    }
+    .cover-info-card h3 {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 3px;
+    }
+    .cover-info-card p {
+      font-size: 7.5px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.45;
+    }
+
+    /* Cover partner logos strip */
     .cover-partner-strip {
+      position: relative;
+      z-index: 2;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 10px;
-      padding: 14px;
+      border-radius: 6px;
+      padding: 6px 10px;
+      margin: 0 18px 6px;
     }
     .cover-partner-strip-label {
-      font-size: 9px;
+      font-size: 6px;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
     .cover-logos-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
+      gap: 5px;
     }
     .cover-logo-card {
       background: white;
-      border-radius: 5px;
-      padding: 5px 8px;
-      height: 34px;
+      border-radius: 4px;
+      padding: 4px 6px;
+      height: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .cover-logo-card img {
       max-height: 100%;
-      max-width: 68px;
+      max-width: 60px;
       object-fit: contain;
     }
     .cover-logo-card span {
       color: var(--navy);
-      font-size: 8px;
+      font-size: 7px;
       font-weight: 800;
       letter-spacing: 0.03em;
-    }
-    .cover-info-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 10px;
-      padding: 16px 18px;
-    }
-    .cover-info-card h3 {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 6px;
-    }
-    .cover-info-card p {
-      font-size: 11px;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.55;
     }
 
     /* ---- PAGE 2+: CONTENT PAGES ---- */
     .content-page {
-      padding: 40px 45px;
-      min-height: 297mm;
+      padding: 16px 18px;
+      min-height: 210mm;
       display: flex;
       flex-direction: column;
       background: var(--navy);
@@ -257,13 +283,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 30px;
-      padding-bottom: 12px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    .page-header-logo { height: 24px; background: white; padding: 3px 6px; border-radius: 4px; }
+    .page-header-logo { height: 16px; background: white; padding: 2px 4px; border-radius: 3px; }
     .page-header-title {
-      font-size: 8px;
+      font-size: 6px;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -271,83 +297,82 @@
     }
 
     .section-label {
-      font-size: 9px;
+      font-size: 8px;
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 6px;
+      margin-bottom: 3px;
     }
     .section-title {
-      font-size: 22px;
+      font-size: 15px;
       font-weight: 900;
-      line-height: 1.2;
+      line-height: 1.15;
       letter-spacing: -0.02em;
       color: var(--white);
       margin-bottom: 8px;
     }
     .section-desc {
-      font-size: 11px;
+      font-size: 7px;
       color: rgba(255,255,255,0.5);
-      line-height: 1.6;
-      max-width: 480px;
-      margin-bottom: 20px;
+      line-height: 1.45;
+      margin-bottom: 8px;
     }
 
     /* Stats row */
     .stats-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-bottom: 36px;
+      gap: 6px;
+      margin-bottom: 10px;
     }
     .stat-box {
       text-align: center;
-      padding: 18px 10px;
+      padding: 6px 4px;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 10px;
+      border-radius: 5px;
       color: white;
     }
     .stat-box .num {
-      font-size: 28px;
+      font-size: 15px;
       font-weight: 900;
       color: var(--accent);
       line-height: 1;
     }
     .stat-box .label {
-      font-size: 9px;
+      font-size: 6px;
       color: rgba(255,255,255,0.45);
-      margin-top: 6px;
+      margin-top: 2px;
     }
 
     /* Cards grid */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 8px;
     }
     .card {
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px;
-      padding: 16px;
-      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 10px 9px;
+      border-left: 2px solid var(--accent);
       background: rgba(255,255,255,0.03);
     }
     .card-num {
-      font-size: 18px;
+      font-size: 13px;
       font-weight: 900;
       color: var(--accent);
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
     .card h3 {
-      font-size: 12px;
+      font-size: 9px;
       font-weight: 800;
       color: var(--white);
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
     .card p {
-      font-size: 10px;
+      font-size: 7.5px;
       color: rgba(255,255,255,0.5);
       line-height: 1.5;
     }
@@ -356,37 +381,62 @@
     .cards-grid-2 {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+      gap: 6px;
     }
 
     /* Partners list */
-    .partners-section { margin-bottom: 30px; }
+    .partners-section { margin-bottom: 10px; }
     .partners-section-title {
-      font-size: 12px;
+      font-size: 9px;
       font-weight: 800;
       color: var(--white);
-      margin-bottom: 12px;
-      padding-bottom: 6px;
+      margin-bottom: 6px;
+      padding-bottom: 3px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .partners-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: 5px;
     }
     .partner-item {
-      padding: 10px;
+      padding: 7px 8px;
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px;
+      border-radius: 5px;
       background: rgba(255,255,255,0.03);
+      display: flex;
+      align-items: center;
+      gap: 7px;
     }
-    .partner-item strong {
-      font-size: 12px;
+    .partner-logo {
+      width: 28px;
+      height: 28px;
+      min-width: 28px;
+      background: white;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .partner-logo img {
+      max-width: 26px;
+      max-height: 26px;
+      object-fit: contain;
+    }
+    .partner-logo span {
+      font-size: 5.5px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+    }
+    .partner-info strong {
+      font-size: 8px;
       color: var(--white);
       display: block;
     }
-    .partner-item span {
-      font-size: 9px;
+    .partner-info span {
+      font-size: 6.5px;
       color: rgba(255,255,255,0.45);
     }
 
@@ -394,90 +444,56 @@
     .tiers-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: 7px;
     }
     .tier {
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px;
-      padding: 16px 12px;
-      border-left: 3px solid var(--accent);
+      border-radius: 5px;
+      padding: 8px 8px;
+      border-left: 2px solid var(--accent);
       background: rgba(255,255,255,0.03);
     }
-    .tier.platinum { border-color: var(--gold); background: rgba(240,192,64,0.06); border-width: 2px; border-left-width: 3px; }
+    .tier.platinum { border-color: var(--gold); background: rgba(240,192,64,0.06); border-width: 1px; border-left-width: 2px; }
     .tier.gold { border-color: rgba(212,168,67,0.5); }
     .tier-name {
-      font-size: 11px;
+      font-size: 9px;
       font-weight: 800;
       letter-spacing: 0.06em;
       color: var(--white);
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
     .tier.platinum .tier-name { color: var(--gold); }
     .tier.gold .tier-name { color: #D4A843; }
     .tier ul {
       list-style: none;
       text-align: left;
-      font-size: 9px;
+      font-size: 7px;
       color: rgba(255,255,255,0.55);
-      line-height: 1.7;
-    }
-
-    /* Showcase text */
-    .showcase-block {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      align-items: start;
-    }
-    .showcase-block img {
-      width: 100%;
-      border-radius: 10px;
-      object-fit: cover;
-      height: 220px;
-    }
-    .showcase-text-content h2 {
-      font-size: 24px;
-      font-weight: 900;
-      line-height: 1.1;
-      color: var(--white);
-      margin-bottom: 14px;
-    }
-    .showcase-text-content .prep {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-    .showcase-text-content p {
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.65;
-      margin-bottom: 10px;
+      line-height: 1.6;
     }
 
     /* Gallery grid */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-top: 16px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      margin-top: 6px;
     }
     .gallery-grid img {
       width: 100%;
-      height: 100px;
+      height: 68px;
       object-fit: cover;
-      border-radius: 6px;
+      border-radius: 3px;
     }
 
     /* Footer */
     .page-footer {
       margin-top: auto;
-      padding-top: 20px;
+      padding-top: 6px;
       border-top: 1px solid rgba(255,255,255,0.08);
       display: flex;
       justify-content: space-between;
-      font-size: 9px;
+      font-size: 6px;
       color: rgba(255,255,255,0.3);
     }
 
@@ -511,99 +527,142 @@
   <img class="cover-bg" src="img/shine-photography-01378.webp" alt="">
 
   <div class="cover-nav">
-    <img src="https://romlux.org/wp-content/uploads/2023/11/logo_romlux_cc.png" alt="RomLux">
+    <img class="cover-nav-logo" src="https://romlux.org/wp-content/uploads/2023/11/logo_romlux_cc.png" alt="RomLux">
+    <div class="cover-nav-qr">
+      <div class="cover-nav-qr-text">
+        <strong>Scan to visit</strong>
+        danlex.github.io/romlux
+      </div>
+      <img src="img/qr-romlux.svg" alt="QR Code">
+    </div>
   </div>
 
   <div class="cover-body">
-    <div class="cover-left">
-      <div class="cover-prep">From</div>
-      <h1>Bucharest Stock Exchange</h1>
-      <div class="cover-prep" style="margin-top:10px">To</div>
-      <h1>Luxembourg <span class="accent">Capital</span></h1>
+    <div class="cover-prep">From</div>
+    <h1>Bucharest Stock Exchange</h1>
+    <div class="cover-prep" style="margin-top:6px">To</div>
+    <h1>Luxembourg <span class="accent">Capital</span></h1>
 
-      <div class="cover-badge">Side event of Luxembourg Venture Days 2026</div>
+    <div class="cover-badge">Side event of Luxembourg Venture Days 2026</div>
 
-      <p class="cover-sub">Where Romania's capital markets ecosystem meets Luxembourg's &euro;5 trillion investment infrastructure.</p>
+    <p class="cover-sub">Where Romania's capital markets ecosystem meets Luxembourg's &euro;5 trillion investment infrastructure.</p>
 
-      <div class="cover-meta">
-        <div class="cover-meta-item">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          14&ndash;15 October 2026
-        </div>
-        <div class="cover-meta-item">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Luxembourg Stock Exchange
-        </div>
-        <div class="cover-meta-item">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Morning Session
-        </div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        14&ndash;15 October 2026
       </div>
+      <div class="cover-meta-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Luxembourg Stock Exchange
+      </div>
+      <div class="cover-meta-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Morning Session
+      </div>
+    </div>
+  </div>
 
-      <div class="cover-actions">
-        <span class="cover-btn cover-btn-primary">Register Interest &rarr;</span>
-        <span class="cover-btn cover-btn-outline">Explore the Forum</span>
+  <div class="cover-gallery" style="position:relative; z-index:2; padding:0 18px; margin-bottom:6px;">
+    <div class="section-label" style="color:var(--accent); margin-bottom:4px;">Luxembourg Venture Days 2025</div>
+    <div class="gallery-grid" style="margin-top:0;">
+      <img src="img/shine-photography-01378.webp" alt="VIP entrance">
+      <img src="img/shine-photography-01568.webp" alt="Audience">
+      <img src="img/shine-photography-01612.webp" alt="Speaker">
+      <img src="img/shine-photography-00247.webp" alt="Networking">
+      <img src="img/shine-photography-01009.webp" alt="Main stage">
+      <img src="img/shine-photography-01066.webp" alt="Branding">
+      <img src="img/dsc01686.webp" alt="Panel">
+      <img src="img/dsc01419.webp" alt="Innovation">
+      <img src="img/shine-photography-01568.webp" alt="Venue">
+    </div>
+  </div>
+
+  <div style="position:relative; z-index:2;">
+    <div class="cover-partner-strip">
+      <div class="cover-partner-strip-label">Organised &amp; supported by</div>
+      <div class="cover-logos-grid">
+        <div class="cover-logo-card"><img src="https://romlux.org/wp-content/uploads/2023/11/logo_romlux_cc.png" alt="RomLux"></div>
+        <div class="cover-logo-card"><img src="https://cdn-assets.inwink.com/cdaad7a2-63a3-ef11-88cf-6045bd9da68b-public/assets/pictures/Elements%2520Branding%2520Luxembourg%2520Venture%2520Days_Full_Color_Logo-08.png" alt="LVD"></div>
+        <div class="cover-logo-card"><img src="https://cdn.brandfetch.io/idEEZQNs4r/w/820/h/160/theme/light/logo.png?c=1bxid64Mup7aczewSAYMX&t=1769411684439" alt="Luxinnovation"></div>
+        <div class="cover-logo-card"><img src="https://lpea.lu/wp-content/uploads/2025/02/logo-FINAL-15y.png" alt="LPEA"></div>
+        <div class="cover-logo-card"><img src="https://stlxipuhot.blob.core.windows.net/staging/sharedmedia/startup/home/stl_logo.svg?ext=.svg" alt="Startup Luxembourg"></div>
+        <div class="cover-logo-card"><span>LuxSE</span></div>
+        <div class="cover-logo-card"><img src="img/guvernul-romaniei.png" alt="MIPE"></div>
+        <div class="cover-logo-card"><span>FOAL</span></div>
       </div>
     </div>
 
-    <div class="cover-right">
-      <div class="cover-partner-strip">
-        <div class="cover-partner-strip-label">Organised &amp; supported by</div>
-        <div class="cover-logos-grid">
-          <div class="cover-logo-card"><img src="https://romlux.org/wp-content/uploads/2023/11/logo_romlux_cc.png" alt="RomLux"></div>
-          <div class="cover-logo-card"><img src="https://cdn-assets.inwink.com/cdaad7a2-63a3-ef11-88cf-6045bd9da68b-public/assets/pictures/Elements%2520Branding%2520Luxembourg%2520Venture%2520Days_Full_Color_Logo-08.png" alt="LVD"></div>
-          <div class="cover-logo-card"><img src="https://cdn.brandfetch.io/idEEZQNs4r/w/820/h/160/theme/light/logo.png?c=1bxid64Mup7aczewSAYMX&t=1769411684439" alt="Luxinnovation"></div>
-          <div class="cover-logo-card"><img src="https://lpea.lu/wp-content/uploads/2025/02/logo-FINAL-15y.png" alt="LPEA"></div>
-          <div class="cover-logo-card"><img src="https://stlxipuhot.blob.core.windows.net/staging/sharedmedia/startup/home/stl_logo.svg?ext=.svg" alt="Startup Luxembourg"></div>
-          <div class="cover-logo-card"><span>LuxSE</span></div>
-          <div class="cover-logo-card"><img src="img/guvernul-romaniei.png" alt="MIPE"></div>
-          <div class="cover-logo-card"><span>FOAL</span></div>
-        </div>
-      </div>
-
+    <div class="cover-bottom" style="grid-template-columns: 1fr 1fr 1fr;">
       <div class="cover-info-card">
         <h3>Investment Forum</h3>
-        <p>Company presentations, sector panels, and 1-to-1 matchmaking with Romania's blue-chip issuers and Luxembourg's institutional investors.</p>
+        <p>Company presentations, sector panels, and 1-to-1 matchmaking with investors.</p>
       </div>
-
       <div class="cover-info-card">
         <h3>Anchored at LuxSE</h3>
-        <p>Integrated into Luxembourg Venture Days 2026 at Europe's second-largest fund domicile &mdash; &euro;5.7T in AUM.</p>
+        <p>Integrated into Luxembourg Venture Days 2026 &mdash; &euro;5.7T in AUM.</p>
+      </div>
+      <div class="cover-info-card">
+        <h3>Networking &amp; Matchmaking</h3>
+        <p>Curated 1-to-1 investor meetings and structured networking sessions.</p>
+      </div>
+    </div>
+
+    <div style="padding:6px 18px 12px;">
+      <div class="section-label" style="color:var(--accent);">Luxembourg Venture Days 2025 in Figures</div>
+      <div class="stats-row" style="margin-bottom:0;">
+        <div class="stat-box"><div class="num">3,400</div><div class="label">attendees from across Europe</div></div>
+        <div class="stat-box"><div class="num">414</div><div class="label">speakers</div></div>
+        <div class="stat-box"><div class="num">330+</div><div class="label">investors actively scouting</div></div>
+        <div class="stat-box"><div class="num">580+</div><div class="label">meeting requests facilitated</div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- PAGE 2: EVENT OVERVIEW + STATS -->
+<!-- PAGE 2: SECTORS + WHY LUXEMBOURG + WHY ROMANIA -->
 <div class="page content-page">
   <div class="page-header">
     <img class="page-header-logo" src="https://romlux.org/wp-content/uploads/2023/11/logo_romlux_cc.png" alt="RomLux">
     <div class="page-header-title">From Bucharest Stock Exchange to Luxembourg Capital 2026</div>
   </div>
 
-  <div class="showcase-block">
-    <img src="img/shine-photography-01378.webp" alt="Luxembourg Venture Days 2025">
-    <div class="showcase-text-content">
-      <div class="prep">From</div>
-      <h2>Bucharest Stock Exchange<br><span class="prep">To</span><br>Luxembourg Capital</h2>
-      <p>Anchored at the Luxembourg Stock Exchange and integrated into Luxembourg Venture Days 2026, the event connects Romania's most liquid and visible issuers with an institutional audience that manages capital across private equity, infrastructure, family office, and UCITS/AIF structures.</p>
-      <p>The programme combines company presentations, sector panels, and one-to-one matchmaking sessions designed to enable substantive investment dialogue.</p>
+  <div class="section-label">Strategic Funding Verticals</div>
+  <div class="section-title">Six sectors defining Romania's next investment cycle.</div>
+  <div class="cards-grid">
+    <div class="card"><div class="card-num">01</div><h3>Energy Transition</h3><p>Renewables, green hydrogen, and grid modernisation across Romania.</p></div>
+    <div class="card"><div class="card-num">02</div><h3>Transport &amp; Logistics</h3><p>Highway corridors, rail modernisation, port and airport programmes.</p></div>
+    <div class="card"><div class="card-num">03</div><h3>Municipal Infrastructure</h3><p>Water systems, urban heating, and sustainable mobility projects.</p></div>
+    <div class="card"><div class="card-num">04</div><h3>Digital Infrastructure</h3><p>5G rollout, data centres, fibre expansion, and smart city platforms.</p></div>
+    <div class="card"><div class="card-num">05</div><h3>Public&ndash;Private Partnerships</h3><p>PPP frameworks for hospitals, education, and social infrastructure.</p></div>
+    <div class="card"><div class="card-num">06</div><h3>Large-Scale Growth Capital</h3><p>Equity and hybrid financing for listed and pre-IPO companies.</p></div>
+  </div>
+
+  <div style="margin-top:18px">
+    <div class="section-label">Why Luxembourg</div>
+    <div class="section-title">The natural gateway to European institutional capital.</div>
+    <div class="cards-grid">
+      <div class="card"><div class="card-num">01</div><h3>Fund Industry Scale</h3><p>&euro;5.7T AUM across 3,900+ structures. Largest fund domicile in Europe.</p></div>
+      <div class="card"><div class="card-num">02</div><h3>EIB &amp; EIF Headquarters</h3><p>EU's primary long-term financing institutions &mdash; natural origination point.</p></div>
+      <div class="card"><div class="card-num">03</div><h3>Private Equity Density</h3><p>300+ PE/VC managers with exposure to infrastructure and growth equity.</p></div>
+      <div class="card"><div class="card-num">04</div><h3>Family Office Community</h3><p>Growing network with increasing allocation to EU convergence markets.</p></div>
+      <div class="card"><div class="card-num">05</div><h3>UCITS &amp; AIF Ecosystem</h3><p>Cross-border fund distribution across 70+ jurisdictions worldwide.</p></div>
+      <div class="card"><div class="card-num">06</div><h3>Sovereign &amp; Institutional</h3><p>Direct proximity to EIB, EIF, EFSI, and multilateral capital pools.</p></div>
     </div>
   </div>
 
-  <div style="margin-top:30px">
-    <div class="section-label">Luxembourg Venture Days 2025 in Figures</div>
-    <div class="stats-row">
-      <div class="stat-box"><div class="num">3,400</div><div class="label">attendees from across Europe</div></div>
-      <div class="stat-box"><div class="num">414</div><div class="label">speakers</div></div>
-      <div class="stat-box"><div class="num">330+</div><div class="label">investors actively scouting</div></div>
-      <div class="stat-box"><div class="num">580+</div><div class="label">meeting requests facilitated</div></div>
+  <div style="margin-top:18px">
+    <div class="section-label">Why Romania</div>
+    <div class="section-title">EU's fastest-growing economy with untapped capital potential.</div>
+    <div class="cards-grid">
+      <div class="card"><div class="card-num">01</div><h3>GDP Growth Leader</h3><p>Consistently among the EU's top performers since 2015.</p></div>
+      <div class="card"><div class="card-num">02</div><h3>&euro;80B+ EU Allocations</h3><p>Structural, cohesion, and NRRP funding through 2030.</p></div>
+      <div class="card"><div class="card-num">03</div><h3>BVB Market Upgrade</h3><p>FTSE Russell Secondary Emerging Market, further upgrades ahead.</p></div>
+      <div class="card"><div class="card-num">04</div><h3>Blue-Chip Pipeline</h3><p>Energy, banking, and infrastructure giants with strong fundamentals.</p></div>
+      <div class="card"><div class="card-num">05</div><h3>Strategic Location</h3><p>Black Sea trade routes and Central European logistics corridors.</p></div>
+      <div class="card"><div class="card-num">06</div><h3>Tech &amp; Innovation Hub</h3><p>Strong IT sector and growing deep-tech ecosystem attracting R&amp;D.</p></div>
     </div>
   </div>
-
-  <div class="section-label">Project Scope</div>
-  <div class="section-title">A curated investment forum structured for dialogue.</div>
-  <div class="section-desc">Bringing together listed Romanian blue-chip companies, strategic project sponsors, and Luxembourg-based institutional capital in a focused Investment Forum.</div>
 
   <div class="page-footer">
     <span>RomLux ASBL &mdash; Romania Luxembourg Business Forum</span>
@@ -611,86 +670,7 @@
   </div>
 </div>
 
-<!-- PAGE 3: GALLERY + SECTORS -->
-<div class="page content-page">
-  <div class="page-header">
-    <img class="page-header-logo" src="https://romlux.org/wp-content/uploads/2023/11/logo_romlux_cc.png" alt="RomLux">
-    <div class="page-header-title">From Bucharest Stock Exchange to Luxembourg Capital 2026</div>
-  </div>
-
-  <div class="section-label">Luxembourg Venture Days 2025</div>
-  <div class="section-title">Where the ecosystem comes together.</div>
-  <div class="gallery-grid">
-    <img src="img/shine-photography-01378.webp" alt="VIP entrance">
-    <img src="img/shine-photography-01568.webp" alt="Audience">
-    <img src="img/shine-photography-01612.webp" alt="Speaker">
-    <img src="img/shine-photography-00247.webp" alt="Networking">
-    <img src="img/shine-photography-01009.webp" alt="Main stage">
-    <img src="img/shine-photography-01066.webp" alt="Branding">
-    <img src="img/dsc01686.webp" alt="Panel">
-    <img src="img/dsc01419.webp" alt="Innovation">
-  </div>
-
-  <div style="margin-top:35px">
-    <div class="section-label">Strategic Funding Verticals</div>
-    <div class="section-title">Six sectors defining Romania's next investment cycle.</div>
-    <div class="section-desc">Multi-year capital deployment opportunities supported by &euro;80+ billion in EU structural and cohesion allocations through 2030.</div>
-    <div class="cards-grid">
-      <div class="card"><div class="card-num">01</div><h3>Energy Transition</h3><p>Renewables capacity, green hydrogen, and grid modernisation projects across Romania's energy landscape.</p></div>
-      <div class="card"><div class="card-num">02</div><h3>Transport &amp; Logistics</h3><p>Highway corridors, rail modernisation, port infrastructure, and airport development programmes.</p></div>
-      <div class="card"><div class="card-num">03</div><h3>Municipal Infrastructure</h3><p>Water systems, urban heating networks, and sustainable mobility projects across Romanian cities.</p></div>
-      <div class="card"><div class="card-num">04</div><h3>Digital Infrastructure</h3><p>5G rollout, data centre capacity, fibre-to-the-premises expansion, and smart city platforms.</p></div>
-      <div class="card"><div class="card-num">05</div><h3>Public&ndash;Private Partnerships</h3><p>Structured PPP frameworks for hospitals, education, and social infrastructure aligned with EU funding.</p></div>
-      <div class="card"><div class="card-num">06</div><h3>Large-Scale Growth Capital</h3><p>Equity and hybrid financing for listed and pre-IPO Romanian companies scaling across the region.</p></div>
-    </div>
-  </div>
-
-  <div class="page-footer">
-    <span>RomLux ASBL &mdash; Romania Luxembourg Business Forum</span>
-    <span>Page 3</span>
-  </div>
-</div>
-
-<!-- PAGE 4: WHY LUXEMBOURG + WHY ROMANIA -->
-<div class="page content-page">
-  <div class="page-header">
-    <img class="page-header-logo" src="https://romlux.org/wp-content/uploads/2023/11/logo_romlux_cc.png" alt="RomLux">
-    <div class="page-header-title">From Bucharest Stock Exchange to Luxembourg Capital 2026</div>
-  </div>
-
-  <div class="section-label">Why Luxembourg</div>
-  <div class="section-title">The natural gateway to European institutional capital.</div>
-  <div class="section-desc">The world's second-largest fund domicile with &euro;5.7 trillion in assets under management across 3,900+ fund structures.</div>
-  <div class="cards-grid">
-    <div class="card"><div class="card-num">01</div><h3>Fund Industry Scale</h3><p>&euro;5.7 trillion AUM across 3,900+ structures. Largest fund domicile in Europe, second globally.</p></div>
-    <div class="card"><div class="card-num">02</div><h3>EIB &amp; EIF Headquarters</h3><p>The EU's primary long-term financing institutions are based here &mdash; the natural origination point for EU-backed capital.</p></div>
-    <div class="card"><div class="card-num">03</div><h3>Private Equity Density</h3><p>300+ PE and VC managers with significant exposure to infrastructure, buyout, and growth equity across CEE.</p></div>
-    <div class="card"><div class="card-num">04</div><h3>Family Office Community</h3><p>Growing network of single- and multi-family offices with increasing allocation to EU convergence markets.</p></div>
-    <div class="card"><div class="card-num">05</div><h3>UCITS &amp; AIF Ecosystem</h3><p>Global centre for cross-border fund distribution &mdash; UCITS across 70+ jurisdictions and full alternative spectrum.</p></div>
-    <div class="card"><div class="card-num">06</div><h3>Sovereign &amp; Institutional Access</h3><p>Direct proximity to EIB, EIF, EFSI, and multilateral capital pools targeting EU convergence regions.</p></div>
-  </div>
-
-  <div style="margin-top:30px">
-    <div class="section-label">Why Romania</div>
-    <div class="section-title">EU's fastest-growing economy with untapped capital potential.</div>
-    <div class="section-desc">Romania combines strong GDP growth with significant EU funding allocations and a rapidly maturing capital market.</div>
-    <div class="cards-grid">
-      <div class="card"><div class="card-num">01</div><h3>GDP Growth Leader</h3><p>Consistently among the EU's top GDP growth performers, outpacing Western European averages since 2015.</p></div>
-      <div class="card"><div class="card-num">02</div><h3>&euro;80B+ EU Allocations</h3><p>Structural, cohesion, and NRRP funding creating multi-year investment pipelines across all sectors through 2030.</p></div>
-      <div class="card"><div class="card-num">03</div><h3>BVB &mdash; Emerging to Developed</h3><p>Bucharest Stock Exchange upgraded by FTSE Russell to Secondary Emerging Market status, with further upgrades ahead.</p></div>
-      <div class="card"><div class="card-num">04</div><h3>Blue-Chip Pipeline</h3><p>Energy, banking, and infrastructure giants with strong fundamentals and growing international investor interest.</p></div>
-      <div class="card"><div class="card-num">05</div><h3>Strategic Location</h3><p>Gateway to Black Sea trade routes and Central European logistics corridors connecting EU core to growth regions.</p></div>
-      <div class="card"><div class="card-num">06</div><h3>Tech &amp; Innovation Hub</h3><p>Strong IT sector, competitive workforce costs, and growing deep-tech ecosystem attracting global R&amp;D centres.</p></div>
-    </div>
-  </div>
-
-  <div class="page-footer">
-    <span>RomLux ASBL &mdash; Romania Luxembourg Business Forum</span>
-    <span>Page 4</span>
-  </div>
-</div>
-
-<!-- PAGE 5: PARTNERS + SPONSORSHIP -->
+<!-- PAGE 3: PARTNERS + SPONSORSHIP -->
 <div class="page content-page">
   <div class="page-header">
     <img class="page-header-logo" src="https://romlux.org/wp-content/uploads/2023/11/logo_romlux_cc.png" alt="RomLux">
@@ -698,38 +678,38 @@
   </div>
 
   <div class="section-label">Strategic Partners</div>
-  <div class="section-title" style="margin-bottom:24px">Institutional support from both ecosystems.</div>
+  <div class="section-title" style="margin-bottom:10px">Institutional support from both ecosystems.</div>
 
   <div class="partners-section">
     <div class="partners-section-title">Luxembourg Partners</div>
     <div class="partners-grid">
-      <div class="partner-item"><strong>Luxembourg Stock Exchange</strong><span>Primary venue and institutional host</span></div>
-      <div class="partner-item"><strong>LPEA</strong><span>Private equity &amp; venture capital association</span></div>
-      <div class="partner-item"><strong>ALFI</strong><span>Luxembourg Fund Industry association</span></div>
-      <div class="partner-item"><strong>Luxembourg for Finance</strong><span>Public-private financial centre agency</span></div>
-      <div class="partner-item"><strong>Luxinnovation</strong><span>National innovation agency</span></div>
-      <div class="partner-item"><strong>Chamber of Commerce</strong><span>Business community engagement</span></div>
-      <div class="partner-item"><strong>FOAL</strong><span>Family Office Association Luxembourg</span></div>
-      <div class="partner-item"><strong>ILA</strong><span>Board-level governance professionals</span></div>
-      <div class="partner-item"><strong>Village by CA Luxembourg</strong><span>Cr&eacute;dit Agricole incubator network</span></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://cdn.brandfetch.io/idRwP_Kjdj/w/400/h/400/theme/dark/icon.jpeg?c=1bfwsmEH20zzEfSNTed" alt="LuxSE"></div><div class="partner-info"><strong>Luxembourg Stock Exchange</strong><span>Primary venue and institutional host</span></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://lpea.lu/wp-content/uploads/2025/02/logo-FINAL-15y.png" alt="LPEA"></div><div class="partner-info"><strong>LPEA</strong><span>Private equity &amp; venture capital</span></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://www.alfi.lu/Content/Img/alfi-logo.png" alt="ALFI"></div><div class="partner-info"><strong>ALFI</strong><span>Luxembourg Fund Industry</span></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://www.luxembourgforfinance.com/wp-content/uploads/2020/10/luxembourg-for-finance_logo.png" alt="LFF"></div><div class="partner-info"><strong>Luxembourg for Finance</strong><span>Financial centre agency</span></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://cdn.brandfetch.io/idEEZQNs4r/w/820/h/160/theme/light/logo.png?c=1bxid64Mup7aczewSAYMX&t=1769411684439" alt="Luxinnovation"></div><div class="partner-info"><strong>Luxinnovation</strong><span>National innovation agency</span></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://cdn.brandfetch.io/idOEsJs6SD/w/364/h/196/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1767826790862" alt="CC"></div><div class="partner-info"><strong>Chamber of Commerce</strong><span>Business community</span></div></div>
+      <div class="partner-item"><div class="partner-logo"><span>FOAL</span></div><div class="partner-info"><strong>FOAL</strong><span>Family Office Association</span></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="img/ila-logo.jpeg" alt="ILA"></div><div class="partner-info"><strong>ILA</strong><span>Board-level governance</span></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://cdn.brandfetch.io/idr_EXOZmw/w/820/h/584/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1772192844478" alt="Village by CA"></div><div class="partner-info"><strong>Village by CA</strong><span>Cr&eacute;dit Agricole incubator</span></div></div>
     </div>
   </div>
 
   <div class="partners-section">
     <div class="partners-section-title">Romanian Partners</div>
     <div class="partners-grid">
-      <div class="partner-item"><strong>ARIR</strong><span>Romanian Investor Relations Association</span></div>
-      <div class="partner-item"><strong>CCIR</strong><span>Romanian Chamber of Commerce &amp; Industry</span></div>
-      <div class="partner-item"><strong>Ministry of Foreign Affairs</strong><span>Diplomatic support &amp; economic promotion</span></div>
-      <div class="partner-item"><strong>MEDAT</strong><span>Strategic sector promotion &amp; cooperation</span></div>
-      <div class="partner-item"><strong>MIPE</strong><span>EU funding &amp; infrastructure investment</span></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://ir-romania.ro/wp-content/uploads/2022/06/ARIR-1.png" alt="ARIR"></div><div class="partner-info"><strong>ARIR</strong><span>Investor Relations Association</span></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://ccir.ro/wp-content/uploads/2017/03/sigla-CCIR-en-albastra-fara-150.jpg" alt="CCIR"></div><div class="partner-info"><strong>CCIR</strong><span>Chamber of Commerce &amp; Industry</span></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Coat_of_arms_of_Romania.svg/200px-Coat_of_arms_of_Romania.svg.png" alt="MAE"></div><div class="partner-info"><strong>Ministry of Foreign Affairs</strong><span>Diplomatic &amp; economic promotion</span></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="https://economie.gov.ro/wp-content/uploads/2024/12/LOGO-MEDAT-gri.png" alt="MEDAT"></div><div class="partner-info"><strong>MEDAT</strong><span>Strategic sector promotion</span></div></div>
+      <div class="partner-item"><div class="partner-logo"><img src="img/guvernul-romaniei.png" alt="MIPE"></div><div class="partner-info"><strong>MIPE</strong><span>EU funding &amp; infrastructure</span></div></div>
     </div>
   </div>
 
-  <div style="margin-top:20px">
+  <div style="margin-top:8px">
     <div class="section-label">Sponsorship</div>
-    <div class="section-title" style="margin-bottom:6px">Three tiers &mdash; calibrated to your engagement objectives.</div>
-    <div class="section-desc" style="margin-bottom:18px">Limited sponsorship positions by design. Secure your programme placement before allocation closes.</div>
+    <div class="section-title" style="margin-bottom:3px">Three tiers &mdash; calibrated to your engagement objectives.</div>
+    <div class="section-desc" style="margin-bottom:6px">Limited sponsorship positions by design. Secure your programme placement before allocation closes.</div>
     <div class="tiers-row">
       <div class="tier">
         <div class="tier-name">Supporting Sponsor</div>
@@ -739,7 +719,7 @@
           <li>&#10003; Official programme listing</li>
           <li>&#10003; RomLux channel visibility</li>
         </ul>
-        <div style="font-size:10px;color:var(--gray);margin-top:6px"><strong>1</strong> representative admitted</div>
+        <div style="font-size:6px;color:var(--gray);margin-top:4px"><strong>1</strong> representative admitted</div>
       </div>
       <div class="tier gold">
         <div class="tier-name">Gold Sponsor</div>
@@ -751,7 +731,7 @@
           <li>&#10003; Investor matchmaking sessions</li>
           <li>&#10003; Panel speaker placement</li>
         </ul>
-        <div style="font-size:10px;color:var(--gray);margin-top:6px"><strong>2</strong> representatives admitted</div>
+        <div style="font-size:6px;color:var(--gray);margin-top:4px"><strong>2</strong> representatives admitted</div>
       </div>
       <div class="tier platinum">
         <div class="tier-name">Platinum Sponsor</div>
@@ -764,19 +744,21 @@
           <li>&#10003; Panel speaker placement</li>
           <li>&#10003; 15-min company presentation</li>
         </ul>
-        <div style="font-size:10px;color:var(--gray);margin-top:6px"><strong>2</strong> representatives admitted</div>
+        <div style="font-size:6px;color:var(--gray);margin-top:4px"><strong>2</strong> representatives admitted</div>
       </div>
     </div>
   </div>
 
-  <div style="margin-top:30px; text-align:center; padding:20px; background:rgba(20,105,255,0.08); border:1px solid rgba(20,105,255,0.15); border-radius:10px;">
-    <div style="font-size:13px; font-weight:700; color:var(--white); margin-bottom:4px;">Register Interest</div>
-    <div style="font-size:11px; color:rgba(255,255,255,0.45);">Contact: info@romlux.org &nbsp;|&nbsp; romlux.org &nbsp;|&nbsp; danlex.github.io/romlux</div>
+  <div style="margin-top:8px; text-align:center; padding:8px; background:rgba(20,105,255,0.08); border:1px solid rgba(20,105,255,0.15); border-radius:6px;">
+    <div style="font-size:10px; font-weight:700; color:var(--white); margin-bottom:3px;">Register Interest</div>
+    <div style="font-size:7px; color:rgba(255,255,255,0.45); margin-bottom:6px;">Contact: info@romlux.org &nbsp;|&nbsp; romlux.org &nbsp;|&nbsp; danlex.github.io/romlux</div>
+    <img src="img/qr-romlux.svg" alt="QR Code" style="width:40px; height:40px; background:white; padding:2px; border-radius:4px;">
+    <div style="font-size:6px; color:rgba(255,255,255,0.35); margin-top:2px;">Scan to visit danlex.github.io/romlux</div>
   </div>
 
   <div class="page-footer">
     <span>RomLux ASBL &mdash; Romania Luxembourg Business Forum</span>
-    <span>Page 5</span>
+    <span>Page 3</span>
   </div>
 </div>
 
